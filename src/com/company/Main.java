@@ -19,11 +19,18 @@ public class Main {
             try
             {
                 System.out.println("Введите значение в метрах (формат - #####.##), чтобы перевести его в футы:");
-                return roundAvoid(sc.nextDouble(),2);
+                double inputValue = roundAvoid(sc.nextDouble(),2);
+                if (inputValue < 0) throw new Exception("Нужно значение больше нуля!");
+                return inputValue;
             } catch (InputMismatchException e)
             {
                 sc.reset();
                 System.out.println("Я не понимаю это значит! Повторите ввод!");
+            }
+            catch (Exception e)
+            {
+                sc.reset();
+                System.out.println(e.getMessage());
             }
         }
     }
